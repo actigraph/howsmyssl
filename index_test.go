@@ -16,7 +16,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	tls110 "github.com/jmhodges/howsmyssl/tls110"
+	tls110 "github.com/actigraph/howsmyssl/tls110"
 )
 
 func TestDumbNilishIndex(t *testing.T) {

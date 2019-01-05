@@ -1,4 +1,4 @@
-module github.com/jmhodges/howsmyssl
+module github.com/actigraph/howsmyssl
 
 require (
 	cloud.google.com/go v0.33.1
