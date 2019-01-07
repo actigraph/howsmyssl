@@ -11,6 +11,9 @@ RUN cd /go/src/github.com/actigraph/howsmyssl && go install
 # Provided by kubernetes secrets or some such
 VOLUME "/secrets"
 
+COPY ./config/development*.pem /secrets/
+COPY ./config/development*.json /secrets/
+
 RUN chown -R www-data /go/src/github.com/actigraph/howsmyssl
 
 USER www-data
@@ -32,7 +35,8 @@ USER www-data
 CMD ["/bin/bash", "-c", "howsmyssl \
     -httpsAddr=:10443 \
     -httpAddr=:10080 \
-    -adminAddr=:4567 \
+    -vhost=acr-tlsapi-agtlsacr.eastus.azurecontainer.io:10443 \
     -templateDir=/go/src/github.com/actigraph/howsmyssl/templates \
     -staticDir=/go/src/github.com/actigraph/howsmyssl/static \
-    -vhost=localhost"]
+    -cert=/secrets/development_cert.pem \
+    -key=/secrets/development_key.pem"]
